@@ -31,21 +31,22 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.Table1 = new System.Windows.Forms.DataGridView();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.Table1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(90, 12);
+            this.textBox1.Location = new System.Drawing.Point(91, 12);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(686, 20);
+            this.textBox1.Size = new System.Drawing.Size(698, 20);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "Путь";
             this.textBox1.TextChanged += new System.EventHandler(this.TextBox_Path);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Location = new System.Drawing.Point(13, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(72, 72);
             this.button1.TabIndex = 1;
@@ -56,7 +57,7 @@
             // Table1
             // 
             this.Table1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Table1.Location = new System.Drawing.Point(476, 38);
+            this.Table1.Location = new System.Drawing.Point(488, 38);
             this.Table1.Name = "Table1";
             this.Table1.Size = new System.Drawing.Size(300, 400);
             this.Table1.TabIndex = 2;
@@ -84,6 +85,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView Table1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
 
