@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MemoryScanner
 {
@@ -37,43 +41,32 @@ namespace MemoryScanner
     
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Запись в табличку!
-           
-            files.Add(new File("Фото", 46, 3));
-            files.Add(new File("Игры", 456, 41));
-            files.Add(new File("Документы", 19, 1));
-
             DataTable table = new DataTable();
             table.Columns.Add("Name", typeof(string));
-            table.Columns.Add("Size", typeof(string));
+            table.Columns.Add("Size", typeof(int));
             table.Columns.Add("%", typeof(int));
+
+            Path = "C:\\steam\\appcache";
 
             if (Directory.Exists(Path))
             {
                 //podkatologi
-
-                string[] dirs = Directory.GetDirectories(Path);
-                foreach (string s1 in dirs)
-                {
-                    string SpisokD = s1;
-                }
-
+                string[] dirs = Directory.GetDirectories(Path);   
+                
                 //faili
-                string[] files = Directory.GetFiles(Path);
-                foreach (string s2 in files)
-                {
-                    string SpisokF = s2;
-                }
+                string[] fileS = Directory.GetFiles(Path);
+
+               // FolderCount = dirs.Length + fileS.Length;
+
+                for (int i = 0; i < dirs.Length; i++)
+                    table.Rows.Add(dirs[i]);
+
+                for (int i = 0; i < fileS.Length; i++)
+                    table.Rows.Add(fileS[i]);
             }
 
-            int FileCount = 3; //Kollichestvo papok, failov 
-
-            for (int i = 0; i < FileCount; i++)
-            {
-                table.Rows.Add(files[i].name, files[i].size, files[i].percent);
-            }
-
-            Table1.DataSource = table;
+                //files.Add(new File(dirs[i], 0, 0));
+                
         }
 
         private void TableClick(object sender, DataGridViewCellEventArgs e)
@@ -83,23 +76,56 @@ namespace MemoryScanner
 
         private void TextBox_Path(object sender, EventArgs e)
         {
-            textBox1.Text = Path;
-            // если папка существует           
+            Path = textBox1.Text;         
         }
 
         private string Path; // тут будем хранить путь к папке
+        Stack<string> step = new Stack<string>();
 
         private void ChoiceOfPath(object sender, EventArgs e)
         {
-            // показать диалог выбора папки
+            step.Clear();
+            
             DialogResult result = folderBrowserDialog1.ShowDialog();
 
-            // если папка выбрана и нажата клавиша `OK` - значит можно получить путь к папке
             if (result == DialogResult.OK)
             {
-                // запишем в нашу переменную путь к папке
-                Path = folderBrowserDialog1.SelectedPath;
-                
+                Path = folderBrowserDialog1.SelectedPath;               
+            }
+
+            textBox1.Text = Path;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int s = Path.Where(c => c == '\\').Count();
+            if (s > 0)
+            {
+                int indexOfSubstring = Path.LastIndexOf('\\');
+                step.Push(Path.Substring(indexOfSubstring));
+                Path = Path.Remove(indexOfSubstring);
+
+                if (s == 1)
+                    Path = Path + "\\";
+
+                textBox1.Text = Path;
+            }
+            else
+            {
+            //
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (step.Count > 0)
+            {
+                Path = Path + step.Pop();
+                textBox1.Text = Path;
+            }           
+            else
+            {
+            //
             }
         }
     }
