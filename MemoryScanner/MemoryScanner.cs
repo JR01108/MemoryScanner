@@ -41,12 +41,14 @@ namespace MemoryScanner
     
         private void Form1_Load(object sender, EventArgs e)
         {
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+
             DataTable table = new DataTable();
             table.Columns.Add("Name", typeof(string));
             table.Columns.Add("Size", typeof(int));
             table.Columns.Add("%", typeof(int));
-
-            Path = "C:\\steam\\appcache";
 
             if (Directory.Exists(Path))
             {
@@ -71,10 +73,12 @@ namespace MemoryScanner
 
         private void TextBox_Path(object sender, EventArgs e)
         {
+            textBox1.Clear();
             Path = textBox1.Text;         
         }
 
-        private string Path; // тут будем хранить путь к папке
+        private string Path;
+
         Stack<string> step = new Stack<string>();
 
         private void ChoiceOfPath(object sender, EventArgs e)
@@ -89,39 +93,54 @@ namespace MemoryScanner
             }
 
             textBox1.Text = Path;
+
+            if (!String.IsNullOrEmpty(Path))
+            {
+                button2.Enabled = true;
+                button4.Enabled = true;
+            }
         }
 
         private void StepBack_Click(object sender, EventArgs e)
         {
             int s = Path.Where(c => c == '\\').Count();
-            if (s > 0)
-            {
-                int indexOfSubstring = Path.LastIndexOf('\\');
-                step.Push(Path.Substring(indexOfSubstring));
-                Path = Path.Remove(indexOfSubstring);
+            int indexOfSubstring = 0;
 
-                if (s == 1)
-                    Path = Path + "\\";
-
-                textBox1.Text = Path;
-            }
-            else
+            if (s > 1)
             {
-            //
+                indexOfSubstring = Path.LastIndexOf('\\');
             }
+
+            if (s == 1)
+            {
+                indexOfSubstring = Path.LastIndexOf('\\') + 1;
+                button2.Enabled = false;
+            }
+
+            step.Push(Path.Substring(indexOfSubstring));
+            Path = Path.Remove(indexOfSubstring);
+            textBox1.Text = Path;
+            button3.Enabled = true;
+
         }
 
         private void StepForward_Click(object sender, EventArgs e)
         {
-            if (step.Count > 0)
-            {
-                Path = Path + step.Pop();
-                textBox1.Text = Path;
-            }           
-            else
-            {
-            //
-            }
+
+            if (step.Count == 1)
+                button3.Enabled = false;
+
+            Path = Path + step.Pop();
+            textBox1.Text = Path;
+            button2.Enabled = true;
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            button2.Enabled = false;
+            button3.Enabled = false;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -132,6 +151,6 @@ namespace MemoryScanner
         private void TableClick(object sender, DataGridViewCellEventArgs e)
         {
             //
-        }
+        }       
     }
 }
