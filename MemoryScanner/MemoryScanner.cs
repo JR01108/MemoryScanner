@@ -67,12 +67,7 @@ namespace MemoryScanner
 
                 //files.Add(new File(dirs[i], 0, 0));
                 
-        }
-
-        private void TableClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //
-        }
+        }     
 
         private void TextBox_Path(object sender, EventArgs e)
         {
@@ -96,7 +91,7 @@ namespace MemoryScanner
             textBox1.Text = Path;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void StepBack_Click(object sender, EventArgs e)
         {
             int s = Path.Where(c => c == '\\').Count();
             if (s > 0)
@@ -116,7 +111,7 @@ namespace MemoryScanner
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void StepForward_Click(object sender, EventArgs e)
         {
             if (step.Count > 0)
             {
@@ -127,6 +122,16 @@ namespace MemoryScanner
             {
             //
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            //
+        }
+
+        private void TableClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //
         }
     }
 }
