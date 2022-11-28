@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlTypes;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MemoryScanner
 {
@@ -70,13 +61,7 @@ namespace MemoryScanner
                 //files.Add(new File(dirs[i], 0, 0));
                 
         }     
-
-        private void TextBox_Path(object sender, EventArgs e)
-        {
-            textBox1.Clear();
-            Path = textBox1.Text;         
-        }
-
+       
         private string Path;
 
         Stack<string> step = new Stack<string>();
@@ -99,6 +84,8 @@ namespace MemoryScanner
                 button2.Enabled = true;
                 button4.Enabled = true;
             }
+
+           // nujno sdelat zapusk programmi(poisk razmera)
         }
 
         private void StepBack_Click(object sender, EventArgs e)
@@ -110,8 +97,7 @@ namespace MemoryScanner
             {
                 indexOfSubstring = Path.LastIndexOf('\\');
             }
-
-            if (s == 1)
+            else
             {
                 indexOfSubstring = Path.LastIndexOf('\\') + 1;
                 button2.Enabled = false;
@@ -121,7 +107,6 @@ namespace MemoryScanner
             Path = Path.Remove(indexOfSubstring);
             textBox1.Text = Path;
             button3.Enabled = true;
-
         }
 
         private void StepForward_Click(object sender, EventArgs e)
@@ -143,6 +128,23 @@ namespace MemoryScanner
             button3.Enabled = false;
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Path = textBox1.Text;
+
+            if (Directory.Exists(Path))
+            {
+               button2.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Некорректные запрос. Такого пути нет.");
+            }
+
+            button4.Enabled = true;
+            //nujno sdelat zapusk programmi(poisk razmera)
+        }
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             //
@@ -151,6 +153,11 @@ namespace MemoryScanner
         private void TableClick(object sender, DataGridViewCellEventArgs e)
         {
             //
-        }       
+        }
+
+        private void TextBox_Path(object sender, EventArgs e)
+        {
+            //       
+        }
     }
 }
