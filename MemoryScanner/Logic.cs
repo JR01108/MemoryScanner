@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 class Logic
 {
-    void SumFolder()
+    public void SumFolder()
     {
         string[] files = Directory.GetFiles(@"C:", "*.*", SearchOption.AllDirectories); //вводим нам нужную папку
         int count = 0;

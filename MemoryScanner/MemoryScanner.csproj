@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FolderTree.cs" />
+    <Compile Include="Logic.cs" />
     <Compile Include="MemoryScanner.cs">
       <SubType>Form</SubType>
     </Compile>
