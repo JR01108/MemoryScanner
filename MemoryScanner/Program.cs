@@ -17,8 +17,6 @@ namespace MemoryScanner
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MemoryScanner());
-            Logic logic = new Logic();
-            logic.SumFolder();
         }
     }
 }
