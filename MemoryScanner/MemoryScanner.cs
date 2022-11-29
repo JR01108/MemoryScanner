@@ -41,24 +41,24 @@ namespace MemoryScanner
             table.Columns.Add("Size", typeof(int));
             table.Columns.Add("%", typeof(int));
 
-            if (Directory.Exists(Path))
-            {
-                //podkatologi
-                string[] dirs = Directory.GetDirectories(Path);   
+            //if (Directory.Exists(Path))
+            //{
+            //    //podkatologi
+            //    string[] dirs = Directory.GetDirectories(Path);   
                 
-                //faili
-                string[] fileS = Directory.GetFiles(Path);
+            //    //faili
+            //    string[] fileS = Directory.GetFiles(Path);
 
-               // FolderCount = dirs.Length + fileS.Length;
+            //   // FolderCount = dirs.Length + fileS.Length;
 
-                for (int i = 0; i < dirs.Length; i++)
-                    table.Rows.Add(dirs[i]);
+            //    for (int i = 0; i < dirs.Length; i++)
+            //        table.Rows.Add(dirs[i]);
 
-                for (int i = 0; i < fileS.Length; i++)
-                    table.Rows.Add(fileS[i]);
-            }
+            //    for (int i = 0; i < fileS.Length; i++)
+            //        table.Rows.Add(fileS[i]);
+            //}
 
-                //files.Add(new File(dirs[i], 0, 0));
+            //    //files.Add(new File(dirs[i], 0, 0));
                 
         }     
        
@@ -91,15 +91,11 @@ namespace MemoryScanner
         private void StepBack_Click(object sender, EventArgs e)
         {
             int s = Path.Where(c => c == '\\').Count();
-            int indexOfSubstring = 0;
+            int indexOfSubstring = Path.LastIndexOf('\\');
 
-            if (s > 1)
-            {
-                indexOfSubstring = Path.LastIndexOf('\\');
-            }
-            else
-            {
-                indexOfSubstring = Path.LastIndexOf('\\') + 1;
+            if (s == 1)
+            {              
+                indexOfSubstring++;
                 button2.Enabled = false;
             }
 
@@ -138,7 +134,7 @@ namespace MemoryScanner
             }
             else
             {
-                MessageBox.Show("Некорректные запрос. Такого пути нет.");
+                MessageBox.Show("Такого пути нет.");
             }
 
             button4.Enabled = true;
@@ -158,6 +154,11 @@ namespace MemoryScanner
         private void TextBox_Path(object sender, EventArgs e)
         {
             //       
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
