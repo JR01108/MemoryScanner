@@ -109,7 +109,7 @@ namespace MemoryScanner
             bool isFinded = false;
             FindNode(name, this.start, ref now, ref isFinded);
             if (isFinded)
-            return now.Children;
+                return now.Children;
             else
                 return null;
         }
