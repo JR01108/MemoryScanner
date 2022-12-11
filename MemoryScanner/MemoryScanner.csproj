@@ -87,7 +87,10 @@
     <None Include="Resources\logo.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
+    <None Include="Resources\Logo3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Zandik.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

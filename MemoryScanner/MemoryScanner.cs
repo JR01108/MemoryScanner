@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -32,34 +33,15 @@ namespace MemoryScanner
     
         private void Form1_Load(object sender, EventArgs e)
         {
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
+
+            ButtonBack.Enabled = false;
+            ButtonForward.Enabled = false;
 
             DataTable table = new DataTable();
             table.Columns.Add("Name", typeof(string));
             table.Columns.Add("Size", typeof(int));
             table.Columns.Add("%", typeof(int));
-
-            //if (Directory.Exists(Path))
-            //{
-            //    //podkatologi
-            //    string[] dirs = Directory.GetDirectories(Path);   
-                
-            //    //faili
-            //    string[] fileS = Directory.GetFiles(Path);
-
-            //   // FolderCount = dirs.Length + fileS.Length;
-
-            //    for (int i = 0; i < dirs.Length; i++)
-            //        table.Rows.Add(dirs[i]);
-
-            //    for (int i = 0; i < fileS.Length; i++)
-            //        table.Rows.Add(fileS[i]);
-            //}
-
-            //    //files.Add(new File(dirs[i], 0, 0));
-                
+               
         }     
        
         private string Path;
@@ -74,55 +56,22 @@ namespace MemoryScanner
 
             if (result == DialogResult.OK)
             {
-                Path = folderBrowserDialog1.SelectedPath;               
+                Path = folderBrowserDialog1.SelectedPath;
+                ButtonForward.Enabled = false;
             }
 
             textBox1.Text = Path;
 
             if (!String.IsNullOrEmpty(Path))
             {
-                button2.Enabled = true;
-                button4.Enabled = true;
+                ButtonBack.Enabled = true;
+                ButtonClear.Enabled = true;
             }
 
            // nujno sdelat zapusk programmi(poisk razmera)
         }
 
-        private void StepBack_Click(object sender, EventArgs e)
-        {
-            int s = Path.Where(c => c == '\\').Count();
-            int indexOfSubstring = Path.LastIndexOf('\\');
-
-            if (s == 1)
-            {              
-                indexOfSubstring++;
-                button2.Enabled = false;
-            }
-
-            step.Push(Path.Substring(indexOfSubstring));
-            Path = Path.Remove(indexOfSubstring);
-            textBox1.Text = Path;
-            button3.Enabled = true;
-        }
-
-        private void StepForward_Click(object sender, EventArgs e)
-        {
-
-            if (step.Count == 1)
-                button3.Enabled = false;
-
-            Path = Path + step.Pop();
-            textBox1.Text = Path;
-            button2.Enabled = true;
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            textBox1.Clear();
-            button2.Enabled = false;
-            button3.Enabled = false;
-        }
+        
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -130,22 +79,75 @@ namespace MemoryScanner
 
             if (Directory.Exists(Path))
             {
-               button2.Enabled = true;
+                ButtonBack.Enabled = true;
             }
             else
             {
                 MessageBox.Show("Такого пути нет.");
             }
 
-            button4.Enabled = true;
+            ButtonClear.Enabled = true;
             //nujno sdelat zapusk programmi(poisk razmera)
+        }
+
+        private void ButtonBack_Click(object sender, EventArgs e)
+        {
+            int s = Path.Where(c => c == '\\').Count();
+            int indexOfSubstring = Path.LastIndexOf('\\');
+
+            if (s == 1)
+            {
+                indexOfSubstring++;
+                ButtonBack.Enabled = false;
+            }
+
+            step.Push(Path.Substring(indexOfSubstring));
+            Path = Path.Remove(indexOfSubstring);
+            textBox1.Text = Path;
+            ButtonForward.Enabled = true;
+        }
+
+        private void ButtonForward_Click(object sender, EventArgs e)
+        {
+            if (step.Count == 1)
+                ButtonForward.Enabled = false;
+
+            Path = Path + step.Pop();
+            textBox1.Text = Path;
+            ButtonBack.Enabled = true;
+        }
+
+        Point lastPoint;
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void ButtonClear_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            ButtonBack.Enabled = false;
+            ButtonForward.Enabled = false;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             //
         }
-
+        
         private void TableClick(object sender, DataGridViewCellEventArgs e)
         {
             //
@@ -156,9 +158,11 @@ namespace MemoryScanner
             //       
         }
 
-        private void CloseButton_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            Close();
+            //
         }
+
+       
     }
 }
