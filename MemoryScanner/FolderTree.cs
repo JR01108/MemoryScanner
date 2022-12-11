@@ -42,7 +42,10 @@ namespace MemoryScanner
             this.IsCatalog = isCatalog;
         }
 
-        public Node() { }
+        public Node()
+        {
+            Children = new List<Node>();
+        }
 
 
         //Добавление детей к объекту
