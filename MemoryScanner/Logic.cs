@@ -45,7 +45,7 @@ namespace MemoryScanner
                         sum += fi.Length;
                     }
                     double kiloByte;
-                    kiloByte = sum / 1024;
+                    kiloByte = sum / (1024*1024);
                     return kiloByte;
                 }
                 else
