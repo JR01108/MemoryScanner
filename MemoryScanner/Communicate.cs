@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MemoryScanner
 {
-    internal class Communicate
+    public class Communicate
     {
-        public List<MemoryScanner.File> GetFiles(string startPath)
+        static public List<MemoryScanner.File> GetFiles(string startPath)
         {
             List<MemoryScanner.File> files = new List<MemoryScanner.File>();
             FileTree fileTree = Logic.ListOfSubfolder(startPath);

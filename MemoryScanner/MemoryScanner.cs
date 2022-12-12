@@ -18,37 +18,50 @@ namespace MemoryScanner
         public struct File
         {
             public string name;
-            public int size;
+            public double size;
             public double percent;
-            bool _isCatalog;
+            public bool isCatalog;
 
-            public File(string _name, int _size, double _percent, bool _isCatalog) 
+            public File(string _name, double _size, double _percent, bool _isCatalog) 
             { 
                 name = _name;
                 size = _size;
                 percent = _percent;
-                this._isCatalog = _isCatalog;
+                this.isCatalog = _isCatalog;
             }                
         }
 
         List<File> files = new List<File>();
-    
+        DataTable table = new DataTable();
+        string Path;
+        Stack<string> step = new Stack<string>();
+        Point lastPoint;      
+
         private void Form1_Load(object sender, EventArgs e)
         {
-
             ButtonBack.Enabled = false;
             ButtonForward.Enabled = false;
-
-            DataTable table = new DataTable();
             table.Columns.Add("Name", typeof(string));
             table.Columns.Add("Size", typeof(int));
-            table.Columns.Add("%", typeof(int));
-               
-        }     
-       
-        private string Path;
+            table.Columns.Add("%", typeof(double));
+            table.Columns.Add("Tipe", typeof(string)); ;
+        }   
+        
+        private void FillinInTable(DataTable table)
+        {
+            for (int i = 0; i < files.Count; i++)
+            {
+                string temp;
+                if (files[i].isCatalog == true)
+                    temp = "Catalog";
+                else
+                    temp = "File";
 
-        Stack<string> step = new Stack<string>();
+                table.Rows.Add(files[i].name, files[i].size, files[i].percent, temp);
+            }
+
+            Table.DataSource = table;
+        } 
 
         private void ChoiceOfPath(object sender, EventArgs e)
         {
@@ -70,11 +83,10 @@ namespace MemoryScanner
                 ButtonClear.Enabled = true;
             }
 
-           // nujno sdelat zapusk programmi(poisk razmera)
-        }
-
+            files = Communicate.GetFiles(Path);
+            FillinInTable(table);
+        }    
         
-
         private void button5_Click(object sender, EventArgs e)
         {
             Path = textBox1.Text;
@@ -83,13 +95,18 @@ namespace MemoryScanner
             {
                 ButtonBack.Enabled = true;
             }
+            else if (textBox1.Text == "")
+            {
+                MessageBox.Show("Введите или выберите путь.");
+            }
             else
             {
                 MessageBox.Show("Такого пути нет.");
             }
 
-            ButtonClear.Enabled = true;
-            //nujno sdelat zapusk programmi(poisk razmera)
+            files = Communicate.GetFiles(Path);
+            FillinInTable(table);
+            ButtonClear.Enabled = true;            
         }
 
         private void ButtonBack_Click(object sender, EventArgs e)
@@ -117,9 +134,7 @@ namespace MemoryScanner
             Path = Path + step.Pop();
             textBox1.Text = Path;
             ButtonBack.Enabled = true;
-        }
-
-        Point lastPoint;
+        }       
         private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -128,6 +143,7 @@ namespace MemoryScanner
                 this.Top += e.Y - lastPoint.Y;
             }
         }
+
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = new Point(e.X, e.Y);
@@ -145,26 +161,9 @@ namespace MemoryScanner
             Close();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            //
-        }
-        
-        private void TableClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //
-        }
-
-        private void TextBox_Path(object sender, EventArgs e)
-        {
-            //       
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            //
+            //manual
         }
-
-       
     }
 }

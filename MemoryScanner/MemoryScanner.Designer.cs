@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemoryScanner));
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.Table1 = new System.Windows.Forms.DataGridView();
+            this.Table = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.ButtonClear = new System.Windows.Forms.Button();
@@ -40,21 +40,20 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.Table1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // Table1
+            // Table
             // 
-            this.Table1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
-            this.Table1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Table1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Table1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Table1.Location = new System.Drawing.Point(63, 154);
-            this.Table1.Name = "Table1";
-            this.Table1.Size = new System.Drawing.Size(275, 354);
-            this.Table1.TabIndex = 2;
-            this.Table1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableClick);
+            this.Table.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
+            this.Table.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Table.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Table.Location = new System.Drawing.Point(62, 154);
+            this.Table.Name = "Table";
+            this.Table.Size = new System.Drawing.Size(275, 354);
+            this.Table.TabIndex = 2;
             // 
             // button1
             // 
@@ -197,10 +196,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(47)))));
             this.textBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(86, 101);
+            this.textBox1.Location = new System.Drawing.Point(85, 96);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(237, 26);
             this.textBox1.TabIndex = 16;
@@ -221,7 +220,7 @@
             this.Controls.Add(this.ButtonBack);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.Table1);
+            this.Controls.Add(this.Table);
             this.Controls.Add(this.ButtonClear);
             this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -232,7 +231,7 @@
             this.Name = "MemoryScanner";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Table1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Table)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -241,7 +240,7 @@
 
         #endregion
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.DataGridView Table1;
+        private System.Windows.Forms.DataGridView Table;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button ButtonClear;
