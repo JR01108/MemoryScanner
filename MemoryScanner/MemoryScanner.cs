@@ -49,6 +49,7 @@ namespace MemoryScanner
         
         private void FillinInTable(DataTable table)
         {
+            table.Clear();
             for (int i = 0; i < files.Count; i++)
             {
                 string temp;
