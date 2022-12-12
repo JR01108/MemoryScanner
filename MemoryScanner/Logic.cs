@@ -33,24 +33,31 @@ namespace MemoryScanner
         // Считает размер папки, подпапок и файлов
         public static double SumFolder(string path)
         {
-            if (IsCatalogOrFile(path))
+            try
             {
-                string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
-                double sum = 0;
-                for (int i = 0; i < files.Length; i++)
+                if (IsCatalogOrFile(path))
                 {
-                    FileInfo fi = new FileInfo(files[i]);
-                    sum += fi.Length;
+                    string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
+                    double sum = 0;
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        FileInfo fi = new FileInfo(files[i]);
+                        sum += fi.Length;
+                    }
+                    double kiloByte;
+                    kiloByte = sum / 1024;
+                    return kiloByte;
                 }
-                double kiloByte;
-                kiloByte = sum / 1024;
-                return kiloByte;
+                else
+                {
+                    FileInfo fileInfo = new FileInfo(path);
+                    double kiloByte = fileInfo.Length / 1024;
+                    return kiloByte;
+                }
             }
-            else
+            catch (Exception e)
             {
-                FileInfo fileInfo = new FileInfo(path);
-                double kiloByte = fileInfo.Length / 1024;
-                return kiloByte;
+                return 0;
             }
         }
         // Проверяет папка выбранный объект или файл

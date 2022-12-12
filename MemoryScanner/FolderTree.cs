@@ -68,7 +68,7 @@ namespace MemoryScanner
     {
         Node start;
 
-        public Node Start { get; set; }
+        public Node Start { get { return start; }  set { start = value; } }
 
         //Создание дерева с единственным коренным объектом
         public FileTree(Node start)
@@ -100,7 +100,7 @@ namespace MemoryScanner
         {
             Node now = new Node();
             bool isFinded = false;
-            FindNode(nowName, Start, ref now, ref isFinded);
+            FindNode(nowName, this.start, ref now, ref isFinded);
             if (isFinded)
                 now.AddNodes(nodes);
         }

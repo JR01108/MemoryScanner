@@ -14,7 +14,7 @@ namespace MemoryScanner
             FileTree fileTree = Logic.ListOfSubfolder(startPath);
             foreach(Node node in fileTree.Start.Children)
             {
-                files.Add(new MemoryScanner.File(node.Name, node.WeightKB, node.WeightKB / fileTree.Start.WeightKB * 100, node.IsCatalog));
+                files.Add(new MemoryScanner.File(node.Name, node.WeightKB, (node.WeightKB / fileTree.Start.WeightKB) * 100, node.IsCatalog));
             }
             return files;
         }
