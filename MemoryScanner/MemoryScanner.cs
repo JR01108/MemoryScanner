@@ -41,8 +41,8 @@ namespace MemoryScanner
         {
             ButtonBack.Enabled = false;
             ButtonForward.Enabled = false;
-            table.Columns.Add("Name", typeof(string));
-            table.Columns.Add("Size", typeof(int));
+            table.Columns.Add("Name", typeof(string));          
+            table.Columns.Add("Size (MB)", typeof(int));
             table.Columns.Add("%", typeof(double));
             table.Columns.Add("Tipe", typeof(string)); ;
         }   
@@ -57,7 +57,7 @@ namespace MemoryScanner
                 else
                     temp = "File";
 
-                table.Rows.Add(files[i].name, files[i].size, files[i].percent, temp);
+                table.Rows.Add(files[i].name, files[i].size, Math.Round(files[i].percent, 1) , temp);
             }
 
             Table.DataSource = table;
