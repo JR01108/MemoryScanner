@@ -162,7 +162,7 @@ namespace MemoryScanner
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //manual
+            MessageBox.Show("Мануал будет доступен в следующей версии");
         }
     }
 }
