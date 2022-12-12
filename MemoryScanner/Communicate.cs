@@ -8,5 +8,6 @@ namespace MemoryScanner
 {
     internal class Communicate
     {
+
     }
 }
