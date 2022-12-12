@@ -4,7 +4,9 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MemoryScanner
 {
@@ -44,7 +46,7 @@ namespace MemoryScanner
             table.Columns.Add("Name", typeof(string));          
             table.Columns.Add("Size (MB)", typeof(int));
             table.Columns.Add("%", typeof(double));
-            table.Columns.Add("Tipe", typeof(string)); ;
+            table.Columns.Add("Tipe", typeof(string));
         }   
         
         private void FillinInTable(DataTable table)
@@ -77,6 +79,8 @@ namespace MemoryScanner
             }
 
             textBox1.Text = Path;
+            textBox1.SelectionStart = textBox1.Text.Length;
+            textBox1.ScrollToCaret();
 
             if (!String.IsNullOrEmpty(Path))
             {
@@ -152,6 +156,7 @@ namespace MemoryScanner
         private void ButtonClear_Click(object sender, EventArgs e)
         {
             textBox1.Clear();
+            table.Clear();
             ButtonBack.Enabled = false;
             ButtonForward.Enabled = false;
         }

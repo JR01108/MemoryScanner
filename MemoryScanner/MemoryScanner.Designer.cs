@@ -67,7 +67,7 @@
             this.Table.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.MidnightBlue;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
@@ -85,7 +85,7 @@
             this.Table.DefaultCellStyle = dataGridViewCellStyle3;
             this.Table.EnableHeadersVisualStyles = false;
             this.Table.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(109)))), ((int)(((byte)(118)))));
-            this.Table.Location = new System.Drawing.Point(62, 154);
+            this.Table.Location = new System.Drawing.Point(12, 205);
             this.Table.Name = "Table";
             this.Table.ReadOnly = true;
             this.Table.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
@@ -110,7 +110,7 @@
             this.Table.ShowCellErrors = false;
             this.Table.ShowEditingIcon = false;
             this.Table.ShowRowErrors = false;
-            this.Table.Size = new System.Drawing.Size(275, 354);
+            this.Table.Size = new System.Drawing.Size(326, 303);
             this.Table.TabIndex = 2;
             // 
             // button1
@@ -125,7 +125,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(11, 154);
+            this.button1.Location = new System.Drawing.Point(22, 154);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(45, 45);
             this.button1.TabIndex = 1;
@@ -143,7 +143,7 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.ForeColor = System.Drawing.Color.Black;
-            this.button5.Location = new System.Drawing.Point(12, 205);
+            this.button5.Location = new System.Drawing.Point(73, 154);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(45, 45);
             this.button5.TabIndex = 8;
@@ -161,7 +161,7 @@
             this.ButtonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonClear.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold);
             this.ButtonClear.ForeColor = System.Drawing.Color.White;
-            this.ButtonClear.Location = new System.Drawing.Point(11, 307);
+            this.ButtonClear.Location = new System.Drawing.Point(226, 155);
             this.ButtonClear.Name = "ButtonClear";
             this.ButtonClear.Size = new System.Drawing.Size(45, 45);
             this.ButtonClear.TabIndex = 6;
@@ -177,9 +177,9 @@
             this.ButtonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonBack.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonBack.ForeColor = System.Drawing.Color.White;
-            this.ButtonBack.Location = new System.Drawing.Point(12, 256);
+            this.ButtonBack.Location = new System.Drawing.Point(124, 154);
             this.ButtonBack.Name = "ButtonBack";
-            this.ButtonBack.Size = new System.Drawing.Size(23, 45);
+            this.ButtonBack.Size = new System.Drawing.Size(45, 45);
             this.ButtonBack.TabIndex = 12;
             this.ButtonBack.Text = "<";
             this.ButtonBack.UseVisualStyleBackColor = false;
@@ -194,9 +194,9 @@
             this.ButtonForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonForward.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonForward.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ButtonForward.Location = new System.Drawing.Point(34, 256);
+            this.ButtonForward.Location = new System.Drawing.Point(175, 154);
             this.ButtonForward.Name = "ButtonForward";
-            this.ButtonForward.Size = new System.Drawing.Size(23, 45);
+            this.ButtonForward.Size = new System.Drawing.Size(45, 45);
             this.ButtonForward.TabIndex = 13;
             this.ButtonForward.Text = ">";
             this.ButtonForward.UseVisualStyleBackColor = false;
@@ -213,7 +213,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(12, 358);
+            this.button2.Location = new System.Drawing.Point(277, 155);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(45, 45);
             this.button2.TabIndex = 14;
@@ -284,6 +284,7 @@
             this.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "MemoryScanner";
