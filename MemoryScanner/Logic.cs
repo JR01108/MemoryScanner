@@ -38,20 +38,20 @@ namespace MemoryScanner
                 if (IsCatalogOrFile(path))
                 {
                     string[] files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
-                    double sum = 0;
+                    long sum = 0;
                     for (int i = 0; i < files.Length; i++)
                     {
                         FileInfo fi = new FileInfo(files[i]);
                         sum += fi.Length;
                     }
-                    double kiloByte;
-                    kiloByte = sum / (1024*1024);
+                    long kiloByte;
+                    kiloByte = sum / 1048576;
                     return kiloByte;
                 }
                 else
                 {
                     FileInfo fileInfo = new FileInfo(path);
-                    double kiloByte = fileInfo.Length / 1024;
+                    long kiloByte = fileInfo.Length / 1048576;
                     return kiloByte;
                 }
             }
