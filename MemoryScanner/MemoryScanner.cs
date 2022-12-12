@@ -19,13 +19,15 @@ namespace MemoryScanner
         {
             public string name;
             public int size;
-            public int percent;
+            public double percent;
+            bool _isCatalog;
 
-            public File(string _name, int _size, int _percent) 
+            public File(string _name, int _size, double _percent, bool _isCatalog) 
             { 
                 name = _name;
                 size = _size;
                 percent = _percent;
+                this._isCatalog = _isCatalog;
             }                
         }
 

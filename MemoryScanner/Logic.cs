@@ -18,18 +18,17 @@ namespace MemoryScanner
             FileTree fileTree = new FileTree(startDireectory);
             DirectoryInfo[] dirs = dir.GetDirectories();
             FileInfo[] files = dir.GetFiles();
-            while(dir.)
+            List<Node> Children = new List<Node>();
             for (int i = 0; i < dirs.Length; i++)
             {
-                nodes[i] = new Node(dirs[i].Name, SumFolder(dirs[i].FullName), IsCatalogOrFile(dirs[i].FullName));
+                Children.Add(new Node(dirs[i].Name, SumFolder(dirs[i].FullName), IsCatalogOrFile(dirs[i].FullName)));
             }
             for (int i = 0; i < files.Length; i++)
             {
-                nodesFiles[i] = new Node(files[i].Name, SumFolder(files[i].FullName), IsCatalogOrFile(files[i].FullName));
+                Children.Add(new Node(files[i].Name, SumFolder(files[i].FullName), IsCatalogOrFile(files[i].FullName)));
             }
-            var result = nodes.Union(nodesFiles);
-            List<Node> Children = new List<Node>();
-            Children.AddRange(result);
+            fileTree.AddLayer(Children, path);
+            return fileTree;
         }
         // Считает размер папки, подпапок и файлов
         public static double SumFolder(string path)

@@ -8,6 +8,9 @@ namespace MemoryScanner
 {
     internal class Communicate
     {
+        public List<File> GetFiles(string startPath)
+        {
 
+        }
     }
 }
