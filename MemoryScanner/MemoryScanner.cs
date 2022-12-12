@@ -94,6 +94,9 @@ namespace MemoryScanner
             if (Directory.Exists(Path))
             {
                 ButtonBack.Enabled = true;
+                files = Communicate.GetFiles(Path);
+                FillinInTable(table);
+                ButtonClear.Enabled = true;
             }
             else if (textBox1.Text == "")
             {
@@ -102,11 +105,7 @@ namespace MemoryScanner
             else
             {
                 MessageBox.Show("Такого пути нет.");
-            }
-
-            files = Communicate.GetFiles(Path);
-            FillinInTable(table);
-            ButtonClear.Enabled = true;            
+            }           
         }
 
         private void ButtonBack_Click(object sender, EventArgs e)
