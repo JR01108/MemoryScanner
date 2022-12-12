@@ -161,7 +161,7 @@
             this.ButtonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonClear.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold);
             this.ButtonClear.ForeColor = System.Drawing.Color.White;
-            this.ButtonClear.Location = new System.Drawing.Point(226, 155);
+            this.ButtonClear.Location = new System.Drawing.Point(226, 154);
             this.ButtonClear.Name = "ButtonClear";
             this.ButtonClear.Size = new System.Drawing.Size(45, 45);
             this.ButtonClear.TabIndex = 6;
@@ -213,7 +213,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(277, 155);
+            this.button2.Location = new System.Drawing.Point(277, 154);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(45, 45);
             this.button2.TabIndex = 14;
