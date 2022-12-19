@@ -17,23 +17,7 @@ namespace MemoryScanner
             InitializeComponent();
         }
 
-        public struct File
-        {
-            public string name;
-            public double size;
-            public double percent;
-            public bool isCatalog;
-
-            public File(string _name, double _size, double _percent, bool _isCatalog) 
-            { 
-                name = _name;
-                size = _size;
-                percent = _percent;
-                this.isCatalog = _isCatalog;
-            }                
-        }
-
-        List<File> files = new List<File>();
+        List<FileStruct> files = new List<FileStruct>();
         DataTable table = new DataTable();
         string Path;
         Stack<string> step = new Stack<string>();

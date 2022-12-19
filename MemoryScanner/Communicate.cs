@@ -6,22 +6,21 @@ using System.Threading.Tasks;
 
 namespace MemoryScanner
 {
-    public class Communicate
+    public interface ICommunicate
     {
-        static public List<MemoryScanner.File> GetFiles(string startPath)
+        List<FileStruct> GetFiles(string startPath);
+    }
+    static public class Communicate
+    {
+        static public List<FileStruct> GetFiles(string startPath)
         {
-            List<MemoryScanner.File> files = new List<MemoryScanner.File>();
+            List<FileStruct> files = new List<FileStruct>();
             FileTree fileTree = Logic.ListOfSubfolder(startPath);
-            foreach(Node node in fileTree.Start.Children)
+            foreach (Node node in fileTree.Start.Children)
             {
-                files.Add(new MemoryScanner.File(node.Name, node.WeightKB, (node.WeightKB / fileTree.Start.WeightKB) * 100, node.IsCatalog));
+                files.Add(new FileStruct(node.Name, node.WeightKB, (node.WeightKB / fileTree.Start.WeightKB) * 100, node.IsCatalog));
             }
             return files;
-        }
-
-        public void DoNothinfJustForTest()
-        {
-
         }
     }
 }

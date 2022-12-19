@@ -47,8 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Communicate.cs" />
-    <Compile Include="FolderTree.cs" />
-    <Compile Include="Logic.cs" />
+    <Compile Include="FileStruct.cs" />
     <Compile Include="MemoryScanner.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +90,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\Zandik.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InnerLogic\InnerLogic.csproj">
+      <Project>{0281bcd7-6895-462f-88ed-e41eaae3cdda}</Project>
+      <Name>InnerLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

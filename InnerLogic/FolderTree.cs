@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MemoryScanner
 {
-   public class Node
+    public class Node
     {
         Node _parent;
         List<Node> _children;
@@ -34,7 +34,7 @@ namespace MemoryScanner
         }
 
         //Создание коренного объекта или объекта с неизвестным родителем
-        public Node (string name, double weightKB, bool isCatalog)
+        public Node(string name, double weightKB, bool isCatalog)
         {
             Children = new List<Node>();
             this.Name = name;
@@ -68,7 +68,7 @@ namespace MemoryScanner
     {
         Node start;
 
-        public Node Start { get { return start; }  set { start = value; } }
+        public Node Start { get { return start; } set { start = value; } }
 
         //Создание дерева с единственным коренным объектом
         public FileTree(Node start)
@@ -88,7 +88,7 @@ namespace MemoryScanner
             }
             else
             {
-                foreach(Node node in now.Children)
+                foreach (Node node in now.Children)
                 {
                     FindNode(name, node, ref result, ref isFinded);
                 }
@@ -118,7 +118,7 @@ namespace MemoryScanner
         }
 
         //Возврат потомков корневого элемента
-        public List<Node> GetNode() 
+        public List<Node> GetNode()
         {
             return Start.Children;
         }
