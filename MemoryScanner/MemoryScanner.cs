@@ -74,9 +74,9 @@ namespace MemoryScanner
 
             files = Communicate.GetFiles(Path);
             FillinInTable(table);
-        }    
-        
-        private void button5_Click(object sender, EventArgs e)
+        }
+
+        private void ButtonAccept_Click(object sender, EventArgs e)
         {
             Path = textBox1.Text;
 
@@ -94,7 +94,7 @@ namespace MemoryScanner
             else
             {
                 MessageBox.Show("Такого пути нет.");
-            }           
+            }
         }
 
         private void ButtonBack_Click(object sender, EventArgs e)
@@ -145,14 +145,14 @@ namespace MemoryScanner
             ButtonForward.Enabled = false;
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void ButtonManual_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Мануал будет доступен в следующей версии");
         }
+
+        private void ButtonClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }        
     }
 }
