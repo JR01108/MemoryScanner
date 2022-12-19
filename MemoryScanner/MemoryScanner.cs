@@ -32,8 +32,8 @@ namespace MemoryScanner
             table.Columns.Add("Size (MB)", typeof(string));
             table.Columns.Add("%", typeof(string));
             table.Columns.Add("Tipe", typeof(string));
-        }   
-        
+        }
+
         private void FillinInTable(DataTable table)
         {
             table.Clear();
@@ -43,23 +43,31 @@ namespace MemoryScanner
 
                 if (files[i].isCatalog == true)
                     temp1 = "Catalog";
-                else
+                else 
                     temp1 = "File";
 
-                if (files[i].size == 0)
-                    table.Rows.Add(files[i].name, "No Access", "No Access", temp1);
-                else
-                table.Rows.Add(files[i].name, files[i].size, Math.Round(files[i].percent, 1) , temp1);
-            }
 
-            Table.DataSource = table;
-        } 
+                if (files[i].size == 0)
+                {
+                    table.Rows.Add(files[i].name, "No Access", "No Access", temp1);
+                }
+                else if (files[i].percent == -1)
+                {
+                    table.Rows.Add(files[i].name, files[i].size, "No Access", temp1);
+                }
+                else
+                {
+                    table.Rows.Add(files[i].name, files[i].size, Math.Round(files[i].percent, 1), temp1);
+                }
+
+                Table.DataSource = table;
+            }
+        }
 
         private void ChoiceOfPath(object sender, EventArgs e)
         {
-            step.Clear();
-            
-            DialogResult result = folderBrowserDialog1.ShowDialog();
+            step.Clear();          
+            DialogResult result = folderBrowserDialog1.ShowDialog();          
 
             if (result == DialogResult.OK)
             {
@@ -67,12 +75,14 @@ namespace MemoryScanner
                 ButtonForward.Enabled = false;
             }
 
+            int s = Path.Where(c => c == '\\').Count();
             textBox1.Text = Path;
             textBox1.SelectionStart = textBox1.Text.Length;
             textBox1.ScrollToCaret();
 
             if (!String.IsNullOrEmpty(Path))
             {
+                if (s > 1)
                 ButtonBack.Enabled = true;
                 ButtonClear.Enabled = true;
             }
