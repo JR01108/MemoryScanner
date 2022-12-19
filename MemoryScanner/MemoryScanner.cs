@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -27,9 +28,9 @@ namespace MemoryScanner
         {
             ButtonBack.Enabled = false;
             ButtonForward.Enabled = false;
-            table.Columns.Add("Name", typeof(string));          
-            table.Columns.Add("Size (MB)", typeof(int));
-            table.Columns.Add("%", typeof(double));
+            table.Columns.Add("Name", typeof(string));         
+            table.Columns.Add("Size (MB)", typeof(string));
+            table.Columns.Add("%", typeof(string));
             table.Columns.Add("Tipe", typeof(string));
         }   
         
@@ -38,13 +39,17 @@ namespace MemoryScanner
             table.Clear();
             for (int i = 0; i < files.Count; i++)
             {
-                string temp;
-                if (files[i].isCatalog == true)
-                    temp = "Catalog";
-                else
-                    temp = "File";
+                string temp1;
 
-                table.Rows.Add(files[i].name, files[i].size, Math.Round(files[i].percent, 1) , temp);
+                if (files[i].isCatalog == true)
+                    temp1 = "Catalog";
+                else
+                    temp1 = "File";
+
+                if (files[i].size == 0)
+                    table.Rows.Add(files[i].name, "No Access", "No Access", temp1);
+                else
+                table.Rows.Add(files[i].name, files[i].size, Math.Round(files[i].percent, 1) , temp1);
             }
 
             Table.DataSource = table;
