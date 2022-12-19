@@ -1,0 +1,10 @@
+C:\Users\golov\Source\Repos\JR01108\MemoryScanner\MemoryScanner\bin\Debug\MemoryScanner.exe.config
+C:\Users\golov\Source\Repos\JR01108\MemoryScanner\MemoryScanner\bin\Debug\MemoryScanner.exe
+C:\Users\golov\Source\Repos\JR01108\MemoryScanner\MemoryScanner\bin\Debug\MemoryScanner.pdb
+C:\Users\golov\Source\Repos\JR01108\MemoryScanner\MemoryScanner\obj\Debug\MemoryScanner.csproj.AssemblyReference.cache
+C:\Users\golov\Source\Repos\JR01108\MemoryScanner\MemoryScanner\obj\Debug\MemoryScanner.MemoryScanner.resources
+C:\Users\golov\Source\Repos\JR01108\MemoryScanner\MemoryScanner\obj\Debug\MemoryScanner.Properties.Resources.resources
+C:\Users\golov\Source\Repos\JR01108\MemoryScanner\MemoryScanner\obj\Debug\MemoryScanner.csproj.GenerateResource.cache
+C:\Users\golov\Source\Repos\JR01108\MemoryScanner\MemoryScanner\obj\Debug\MemoryScanner.csproj.CoreCompileInputs.cache
+C:\Users\golov\Source\Repos\JR01108\MemoryScanner\MemoryScanner\obj\Debug\MemoryScanner.exe
+C:\Users\golov\Source\Repos\JR01108\MemoryScanner\MemoryScanner\obj\Debug\MemoryScanner.pdb
